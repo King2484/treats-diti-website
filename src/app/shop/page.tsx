@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShoppingBag, Search, Filter } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const allCookies = [
   { id: 1, name: "CHOCOLATE CHIP", category: "Classic", price: "$3.00", image: "/images/cookie_stack_1779828483043.png" },

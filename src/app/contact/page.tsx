@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, ChevronDown } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const faqs = [
   { question: "How long do the cookies stay fresh?", answer: "Our cookies are best enjoyed within 3 days of delivery. For maximum freshness, keep them in an airtight container at room temperature." },
