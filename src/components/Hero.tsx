@@ -4,33 +4,27 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Heart } from "lucide-react";
 
-// Precise Cloud SVGs to match the design
-const Cloud1 = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 60" fill="white" className={className}>
-    <path d="M 25 60 A 20 20 0 0 1 25 20 A 25 25 0 0 1 70 15 A 20 20 0 0 1 80 50 A 15 15 0 0 1 75 60 Z" />
+// Exact Cloud SVGs for Background
+const BackgroundCloud = ({ className, width, height }: { className?: string, width: string, height: string }) => (
+  <svg viewBox="0 0 100 50" fill="white" className={className} width={width} height={height}>
+    <path d="M 25 50 A 20 20 0 0 1 25 10 A 25 25 0 0 1 70 5 A 20 20 0 0 1 80 40 A 15 15 0 0 1 75 50 Z" />
   </svg>
 );
 
-const Cloud2 = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 60" fill="white" className={className}>
-    <path d="M 30 60 A 15 15 0 0 1 30 30 A 25 25 0 0 1 70 20 A 20 20 0 0 1 85 50 A 10 10 0 0 1 80 60 Z" />
-  </svg>
-);
-
-// The exact "FRESHLY BAKED EVERYDAY!" badge from the mockup
+// The exact "FRESHLY BAKED EVERYDAY!" badge from the mockup (cloud shape)
 const FreshlyBakedBadge = () => (
-  <div className="absolute top-10 -right-4 md:-right-12 z-40 animate-[pulse_4s_ease-in-out_infinite]">
-    <div className="relative w-40 h-40 drop-shadow-xl">
-      <svg viewBox="0 0 140 140" fill="white" className="w-full h-full">
-        {/* Scalloped edge to match the mockup perfectly */}
-        <path d="M70,5 C85,5 95,15 95,15 C110,10 125,20 125,35 C125,35 135,45 130,60 C135,75 125,90 125,90 C125,105 110,115 95,110 C95,110 85,120 70,120 C55,120 45,110 45,110 C30,115 15,105 15,90 C15,90 5,75 10,60 C5,45 15,35 15,35 C15,20 30,10 45,15 C45,15 55,5 70,5 Z" 
+  <div className="absolute top-16 -right-8 z-40 animate-[pulse_4s_ease-in-out_infinite]">
+    <div className="relative w-48 h-48 drop-shadow-xl">
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Exact puffy cloud shape with stroke */}
+        <path d="M 50 10 A 15 15 0 0 0 35 20 A 18 18 0 0 0 15 35 A 15 15 0 0 0 15 65 A 18 18 0 0 0 35 80 A 15 15 0 0 0 50 90 A 15 15 0 0 0 65 80 A 18 18 0 0 0 85 65 A 15 15 0 0 0 85 35 A 18 18 0 0 0 65 20 A 15 15 0 0 0 50 10 Z" 
               fill="white" 
               stroke="#EAB243" 
-              strokeWidth="2" 
+              strokeWidth="2.5" 
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 -mt-2">
-        <span className="text-bubble font-black text-[#EAB243] text-[15px] leading-tight tracking-wide drop-shadow-sm">
+        <span className="text-bubble font-black text-[#EAB243] text-[16px] leading-tight tracking-wide drop-shadow-sm">
           FRESHLY<br/>BAKED<br/>EVERYDAY!
         </span>
         <Heart className="w-4 h-4 text-[#EAB243] fill-[#EAB243] mt-1" />
@@ -39,38 +33,65 @@ const FreshlyBakedBadge = () => (
   </div>
 );
 
+// Sparkle highlight for the glossy text effect
+const TextSparkle = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 20 20" fill="white" className={`absolute w-6 h-6 z-50 ${className}`}>
+    <path d="M10 0 C10 5 15 10 20 10 C15 10 10 15 10 20 C10 15 5 10 0 10 C5 10 10 5 10 0 Z" opacity="0.9" />
+  </svg>
+);
+
+// Puffy Heart for L<Heart>VE
+const PuffyHeart = () => (
+  <svg viewBox="0 0 32 32" className="w-[1.2em] h-[1.2em] mx-1 -mb-1 inline-block drop-shadow-[5px_5px_0px_#FDE792]">
+    <path d="M16 28.5 C16 28.5 4 20 4 11 C4 6 8 4 12 4 C14.5 4 16 6 16 6 C16 6 17.5 4 20 4 C24 4 28 6 28 11 C28 20 16 28.5 16 28.5 Z" 
+          fill="white" 
+          stroke="#EAB243" 
+          strokeWidth="3" 
+    />
+  </svg>
+);
+
 export default function Hero() {
   return (
-    <section className="relative w-full pt-32 pb-20 overflow-visible bg-brand-light">
+    <section className="relative w-full pt-40 pb-0 overflow-hidden bg-[#FFF7DB]">
+      
       {/* Background Decorative Clouds */}
-      <Cloud1 className="absolute top-24 right-[5%] w-36 h-24 opacity-100 hidden md:block" />
-      <Cloud2 className="absolute top-48 left-[2%] w-28 h-20 opacity-100 hidden md:block" />
-      <Cloud1 className="absolute bottom-10 left-[8%] w-56 h-40 opacity-100 z-20" />
-      <Cloud2 className="absolute -bottom-16 right-0 w-80 h-60 opacity-100 z-20" />
+      <BackgroundCloud className="absolute top-32 right-[2%] opacity-90 hidden md:block" width="120px" height="80px" />
+      <BackgroundCloud className="absolute top-52 left-[5%] opacity-90 hidden md:block" width="90px" height="60px" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-30">
+      {/* Massive Overlapping Bottom Clouds */}
+      <div className="absolute -bottom-20 -left-10 w-full h-[250px] z-50 pointer-events-none flex justify-between">
+        <BackgroundCloud className="opacity-100" width="400px" height="250px" />
+        <BackgroundCloud className="opacity-100 ml-auto -mr-20" width="500px" height="300px" />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-30 pb-32">
         <div className="flex flex-col md:flex-row items-center pt-8">
           
           {/* Left Text */}
-          <div className="w-full md:w-1/2 z-30 mb-20 md:mb-0 text-center md:text-left flex flex-col items-center md:items-start">
+          <div className="w-full md:w-1/2 z-30 mb-20 md:mb-0 text-center md:text-left flex flex-col items-center md:items-start relative">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, type: "spring" }}
-              className="text-[4.5rem] md:text-[6rem] leading-[0.9] flex flex-col items-center md:items-start w-full"
+              className="text-[5.5rem] md:text-[7rem] leading-[0.85] flex flex-col items-center md:items-start w-full relative"
             >
-              <div className="flex w-full justify-center md:justify-start">
+              <TextSparkle className="-top-4 left-10" />
+              <TextSparkle className="top-16 right-20 w-4 h-4" />
+              <TextSparkle className="top-40 left-[40%]" />
+              
+              <div className="flex w-full justify-center md:justify-start pl-4 md:pl-0">
                 <span className="text-3d whitespace-nowrap">SWEET</span>
               </div>
-              <div className="flex w-full justify-center md:justify-start ml-0 md:-ml-4 mt-2">
+              <div className="flex w-full justify-center md:justify-start -ml-2 md:-ml-6 mt-3">
                 <span className="text-3d whitespace-nowrap">TREATS,</span>
               </div>
-              <div className="flex w-full justify-center md:justify-start mt-2">
+              <div className="flex w-full justify-center md:justify-start mt-3 pl-2 md:pl-0">
                 <span className="text-3d whitespace-nowrap">MADE WITH</span>
               </div>
-              <div className="flex w-full justify-center md:justify-start mt-2 items-center">
+              <div className="flex w-full justify-center md:justify-start mt-3 items-center ml-2 md:ml-4">
                 <span className="text-3d">L</span>
-                <Heart className="w-[1em] h-[1em] mx-1 mb-2 text-white fill-white stroke-[2px] stroke-brand-primary drop-shadow-[3px_3px_0px_var(--color-brand-yellow)]" />
+                <PuffyHeart />
                 <span className="text-3d">VE</span>
               </div>
             </motion.div>
@@ -79,7 +100,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-10 text-brand-dark font-medium text-[19px] max-w-sm leading-relaxed"
+              className="mt-12 text-[#7A5230] font-medium text-[21px] max-w-sm leading-relaxed"
             >
               Soft, delicious, and baked to perfection. Cookies that make every moment sweeter.
             </motion.p>
@@ -88,46 +109,47 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 bg-[#EAB243] text-white font-black uppercase text-lg tracking-wider px-10 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-[#D89B27] transition-all btn-shadow active:btn-shadow w-full md:w-auto"
+              className="mt-10 bg-[#EAB243] text-white font-black text-xl px-12 py-4 rounded-full flex items-center justify-center gap-3 hover:bg-[#D89B27] transition-all btn-shadow active:btn-shadow w-full md:w-auto"
             >
-              SHOP NOW <Heart className="w-5 h-5 fill-white" />
+              SHOP NOW <Heart className="w-6 h-6 fill-white" />
             </motion.button>
           </div>
 
-          {/* Right Image */}
-          <div className="w-full md:w-1/2 relative flex justify-center items-end h-[500px] mt-10 md:mt-0">
-            {/* The exact background arch */}
-            <div className="absolute top-0 md:-top-10 w-[450px] h-[550px] bg-[#FDE792] rounded-t-[225px] -z-10" />
+          {/* Right Image & Pedestal Group */}
+          <div className="w-full md:w-1/2 relative flex justify-center items-end h-[600px] mt-10 md:mt-0 right-0 md:-right-10">
             
-            {/* Scalloped Badge overlaying the cookies and arch */}
+            {/* Massive Background Arch */}
+            <div className="absolute bottom-10 w-[550px] h-[650px] bg-[#FDE792] rounded-t-[275px] -z-10" />
+            
+            {/* Scalloped Badge overlaying everything */}
             <FreshlyBakedBadge />
 
             {/* Pedestal & Cookies Group */}
-            <div className="relative flex flex-col items-center justify-end w-full pb-10">
+            <div className="relative flex flex-col items-center justify-end w-full pb-0 z-20">
               
               {/* Cookies Image */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", bounce: 0.4, duration: 1 }}
-                className="relative z-20 w-[350px] h-[350px] -mb-16 mix-blend-multiply"
+                className="relative z-30 w-[450px] h-[450px] -mb-16 drop-shadow-[0_20px_20px_rgba(0,0,0,0.25)]"
               >
                 <Image 
                   src="/images/cookie_stack_isolated.png" 
                   alt="Perfect stack of cookies" 
                   fill 
-                  className="object-contain drop-shadow-2xl" 
+                  className="object-contain" 
                   priority
                 />
               </motion.div>
 
-              {/* 3D Yellow Pedestal */}
-              <div className="relative z-10">
-                <svg width="450" height="150" viewBox="0 0 450 150">
+              {/* Massive 3D Yellow Pedestal */}
+              <div className="relative z-10 -mb-20">
+                <svg width="600" height="200" viewBox="0 0 600 200">
                   {/* Cylinder Body */}
-                  <path d="M 0 75 L 0 120 A 225 30 0 0 0 450 120 L 450 75 Z" fill="#EAB243" />
-                  {/* Cylinder Top */}
-                  <ellipse cx="225" cy="75" rx="225" ry="40" fill="#FDE792" />
+                  <path d="M 0 100 L 0 200 A 300 40 0 0 0 600 200 L 600 100 Z" fill="#FDE792" />
+                  {/* Cylinder Top (Lighter) */}
+                  <ellipse cx="300" cy="100" rx="300" ry="50" fill="#FEF08A" />
                 </svg>
               </div>
 
