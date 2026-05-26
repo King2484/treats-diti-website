@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 
-const inter = Inter({
-  variable: "--font-sans",
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
+});
+
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   title: "Treats Diti | Sweet Treats, Made with Love",
-  description: "Freshly baked stuffed cookies made with premium ingredients. Order your box of happiness today!",
+  description: "Freshly baked stuffed cookies made with premium ingredients.",
 };
 
 export default function RootLayout({
@@ -19,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${fredoka.variable} ${nunito.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col font-sans relative cursor-none" suppressHydrationWarning>
         <CustomCursor />
         {children}
