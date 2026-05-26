@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-light: #FFF5C4;
-  --color-brand-yellow: #F0D050;
-  --color-brand-primary: #C8860A;
-  --color-brand-dark: #5A4010;
-  --color-brand-nav: #7A5C10;
-  --color-brand-white: #FFFFFF;
-  --color-brand-stroke: #B8720A;
+  --color-page: #FFF5C4;
+  --color-amber: #C8860A;
+  --color-amber-stroke: #B8720A;
+  --color-text-body: #5A4010;
+  --color-text-nav: #7A5C10;
+  --color-arch: #F0D050;
+  --color-box-bg: #F2C832;
+  --color-card-border: #F0E0A0;
+  --color-white: #FFFFFF;
   
   --font-fredoka: var(--font-fredoka);
   --font-nunito: var(--font-nunito);
 }
 
 :root {
-  --background: var(--color-brand-light);
-  --foreground: var(--color-brand-dark);
+  --background: var(--color-page);
+  --foreground: var(--color-text-body);
 }
 
 body {
@@ -28,11 +30,23 @@ body {
 }
 
 @layer utilities {
-  .hero-title {
+  .bubble-text {
     font-family: var(--font-fredoka);
-    color: white;
-    -webkit-text-stroke: 4px var(--color-brand-stroke);
+    color: #FFFFFF;
+    -webkit-text-stroke: 4px var(--color-amber-stroke);
     paint-order: stroke fill;
-    text-shadow: 4px 5px 0 rgba(160, 100, 0, 0.35);
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

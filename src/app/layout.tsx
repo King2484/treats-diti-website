@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
+import { CartProvider } from "@/context/CartContext";
 
 const fredoka = Fredoka({
   variable: "--font-fredoka",
@@ -26,9 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fredoka.variable} ${nunito.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans relative cursor-none" suppressHydrationWarning>
-        <CustomCursor />
-        {children}
+      <body className="min-h-screen flex flex-col font-[family-name:var(--font-nunito)] relative" suppressHydrationWarning>
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
