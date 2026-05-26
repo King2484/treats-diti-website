@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-light: #FFF6C3;
-  --color-brand-yellow: #FFEAA7;
-  --color-brand-primary: #F3B33D;
-  --color-brand-dark: #5C4033;
+  --color-brand-light: #FFF7DB;
+  --color-brand-yellow: #FDE792;
+  --color-brand-primary: #EAB243;
+  --color-brand-dark: #7A5230;
   --color-brand-white: #FFFFFF;
+  --color-brand-border: #F3E0A3;
   
-  --font-bubble: "DynaPuff", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-bubble: var(--font-bubble);
+  --font-sans: var(--font-sans);
 }
 
 :root {
@@ -25,19 +26,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Utilities for Premium Look */
 @layer utilities {
-  .glass-card {
-    @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(243,179,61,0.1)];
+  .text-3d {
+    font-family: var(--font-bubble);
+    color: white;
+    -webkit-text-stroke: 2px var(--color-brand-primary);
+    text-shadow: 
+      3px 3px 0px var(--color-brand-yellow),
+      5px 5px 0px rgba(122, 82, 48, 0.1);
   }
   
   .text-bubble {
     font-family: var(--font-bubble);
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-    -webkit-text-stroke: 1px var(--color-brand-primary);
   }
   
-  .premium-shadow {
-    box-shadow: 0 10px 40px -10px rgba(243, 179, 61, 0.3);
+  .card-shadow {
+    box-shadow: 0 10px 25px -5px rgba(234, 178, 67, 0.15);
+  }
+  
+  .btn-shadow {
+    box-shadow: 0 4px 0px 0px #C79430; /* Darker yellow for 3d button effect */
+  }
+  
+  .btn-shadow:active {
+    box-shadow: 0 0px 0px 0px #C79430;
+    transform: translateY(4px);
   }
 }
