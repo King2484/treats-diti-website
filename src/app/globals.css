@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Meila';
+  src: url('/font/MeilaArabicDEMO-Solid.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MeilaLine';
+  src: url('/font/MeilaArabicDEMO-LineBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 @theme {
   --color-brand-light: #FFF7DB;
   --color-brand-yellow: #FDE792;
@@ -8,8 +22,9 @@
   --color-brand-white: #FFFFFF;
   --color-brand-border: #F3E0A3;
   
-  --font-bubble: var(--font-bubble);
-  --font-sans: var(--font-sans);
+  --font-bubble: "Meila", system-ui, sans-serif;
+  --font-bubble-line: "MeilaLine", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
@@ -30,14 +45,18 @@ body {
   .text-3d {
     font-family: var(--font-bubble);
     color: white;
-    -webkit-text-stroke: 2px var(--color-brand-primary);
+    -webkit-text-stroke: 4px var(--color-brand-primary);
     text-shadow: 
-      3px 3px 0px var(--color-brand-yellow),
-      5px 5px 0px rgba(122, 82, 48, 0.1);
+      4px 4px 0px var(--color-brand-yellow),
+      8px 8px 0px rgba(122, 82, 48, 0.1);
   }
   
   .text-bubble {
     font-family: var(--font-bubble);
+  }
+
+  .text-bubble-line {
+    font-family: var(--font-bubble-line);
   }
   
   .card-shadow {
@@ -45,7 +64,7 @@ body {
   }
   
   .btn-shadow {
-    box-shadow: 0 4px 0px 0px #C79430; /* Darker yellow for 3d button effect */
+    box-shadow: 0 4px 0px 0px #C79430;
   }
   
   .btn-shadow:active {

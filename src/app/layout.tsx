@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { DynaPuff, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-
-const dynaPuff = DynaPuff({
-  variable: "--font-bubble",
-  subsets: ["latin"],
-});
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -17,15 +13,13 @@ export const metadata: Metadata = {
   description: "Freshly baked stuffed cookies made with premium ingredients. Order your box of happiness today!",
 };
 
-import CustomCursor from "@/components/CustomCursor";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dynaPuff.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col font-sans relative cursor-none" suppressHydrationWarning>
         <CustomCursor />
         {children}
